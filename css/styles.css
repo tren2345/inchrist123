@@ -1,6 +1,6 @@
 /* Custom styles */
-body {
-  background: linear-gradient(135deg, #f3e7e9, #e3eeff); /* Creative gradient for lively feel */
+html.light body {
+  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
   animation: gradient-shift 10s ease infinite alternate;
 }
 
@@ -9,26 +9,29 @@ body {
   100% { background-position: 100% 50%; }
 }
 
-body.dark {
-  background-color: #1f2937;
-  color: #f3f4f6;
+html.dark body {
   background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #f3f4f6;
 }
 
-body.dark .bg-gray-200 {
+html.dark .bg-gray-200 {
   background-color: #4b5563;
 }
 
-body.dark .border-gray-300 {
+html.dark .border-gray-300 {
   border-color: #4b5563;
+}
+
+html.dark .bg-blue-100 {
+  background-color: #1e3a8a;
+}
+
+html.dark .bg-green-100 {
+  background-color: #14532d;
 }
 
 .nav-link.active {
   @apply underline;
-}
-
-.lang-btn.active {
-  @apply bg-blue-500 text-white;
 }
 
 .ripple {
