@@ -1,4 +1,6 @@
-/* Custom styles */
+/* Custom styles for United in Christ Ministry Portfolio */
+
+/* Light mode background with gradient animation */
 html.light body {
   background: linear-gradient(135deg, #f3e7e9, #e3eeff);
   animation: gradient-shift 10s ease infinite alternate;
@@ -9,6 +11,7 @@ html.light body {
   100% { background-position: 100% 50%; }
 }
 
+/* Dark mode styles */
 html.dark body {
   background: linear-gradient(135deg, #2c3e50, #34495e);
   color: #f3f4f6;
@@ -30,10 +33,17 @@ html.dark .bg-green-100 {
   background-color: #14532d;
 }
 
+/* Gradient for footer in dark mode */
+html.dark .bg-gradient-to-r {
+  background: linear-gradient(to right, #1e3a8a, #14532d);
+}
+
+/* Active navigation link */
 .nav-link.active {
   @apply underline;
 }
 
+/* Ripple effect for touch/click */
 .ripple {
   position: fixed;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
@@ -52,6 +62,18 @@ html.dark .bg-green-100 {
   }
 }
 
+/* Aspect ratio for video iframes */
 .aspect-video {
   aspect-ratio: 16 / 9;
+}
+
+/* Focus states for accessibility */
+:focus {
+  outline: none;
+  ring: 2px solid #3b82f6;
+}
+
+/* Interaction buttons for Twitter-like posts */
+.interaction-button:hover {
+  transform: scale(1.2);
 }
