@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified in Christ Ministry - Pastor Kavin Bobbitt Portfolio</title>
+  <meta name="description" content="Portfolio for Pastor Kavin Bobbitt and Unified in Christ Ministry, spreading the Good News of Jesus Christ.">
+  <meta name="keywords" content="Unified in Christ Ministry, Pastor Kavin Bobbitt, Christian ministry, sermons, prayer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900 transition-colors duration-700 animate__animated animate__fadeIn" id="body">
+  <!-- Touch Ripple Effect -->
+  <div id="ripple" class="ripple hidden"></div>
+
+  <!-- Navigation -->
+  <nav class="flex justify-center space-x-8 py-4 border-b border-gray-300 bg-opacity-30 backdrop-blur-lg sticky top-0 z-20">
+    <a href="#home" class="nav-link hover:underline">Home</a>
+    <a href="#videos" class="nav-link hover:underline">Videos</a>
+    <a href="#events" class="nav-link hover:underline">Events</a>
+    <a href="#prayer" class="nav-link hover:underline">Prayer</a>
+    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200" aria-label="Switch to dark mode">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    </button>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center p-4 animate__animated animate__fadeIn">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <img src="images/pastor-kavin-bobbitt.jpg" alt="Pastor Kavin Bobbitt" class="rounded-2xl shadow-lg w-64 h-64 object-cover animate__animated animate__bounceIn" loading="lazy">
+      <div>
+        <p id="typed-text" class="text-lg font-semibold italic max-w-md animate__animated animate__fadeInUp"></p>
+        <p id="language-label" class="text-sm text-gray-600"></p>
+        <div class="flex space-x-4 mt-4">
+          <button class="lang-btn p-2 rounded bg-gray-200" data-lang="0">Hebrew</button>
+          <button class="lang-btn p-2 rounded bg-gray-200" data-lang="1">Aramaic</button>
+          <button class="lang-btn p-2 rounded bg-gray-200" data-lang="2">English (KJV)</button>
+        </div>
+        <p class="mt-4 text-gray-700 max-w-md">Pastor Kavin Bobbitt, founder of Unified in Christ Ministry, is a retired U.S. Naval veteran and Master of Divinity graduate dedicated to spreading the Gospel.</p>
+      </div>
+    </div>
+    <div class="flex justify-center space-x-6 mt-6">
+      <a href="https://www.facebook.com/unifiedinchristministry1/" target="_blank" rel="noopener" aria-label="Facebook" class="hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+      <a href="https://www.instagram.com/unifiedinchristministry/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.948-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a href="https://www.youtube.com/@unifiedinchristministry" target="_blank" rel="noopener" aria-label="YouTube" class="hover:scale-110 transition-transform duration-300"><svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+    </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos" class="p-8 grid md:grid-cols-2 gap-6 bg-opacity-20 backdrop-blur-md bg-blue-100 dark:bg-blue-900 animate__animated animate__fadeIn">
+    <h2 class="text-2xl font-bold mb-4 col-span-full text-center">Sermons & Messages by Pastor Kavin Bobbitt</h2>
+    <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white dark:bg-gray-800">
+      <iframe src="https://www.youtube.com/embed/z4aKPSyU1ls" title="Let Us Gaze Unto The Beauty Of The Lord" allow="encrypted-media" class="w-full h-full" loading="lazy"></iframe>
+      <a href="https://www.youtube.com/watch?v=z4aKPSyU1ls" target="_blank" class="block text-center text-blue-500 hover:underline mt-2">Watch on YouTube</a>
+    </div>
+    <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white dark:bg-gray-800">
+      <iframe src="https://www.youtube.com/embed/thrRcQTfsYk" title="Understanding the Person & the Works of the Holy Spirit" allow="encrypted-media" class="w-full h-full" loading="lazy"></iframe>
+      <a href="https://www.youtube.com/watch?v=thrRcQTfsYk" target="_blank" class="block text-center text-blue-500 hover:underline mt-2">Watch on YouTube</a>
+    </div>
+    <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white dark:bg-gray-800">
+      <iframe src="https://www.youtube.com/embed/GW5Czk9tHnI" title="The Kingdom Is Bigger Than You!" allow="encrypted-media" class="w-full h-full" loading="lazy"></iframe>
+      <a href="https://www.youtube.com/watch?v=GW5Czk9tHnI" target="_blank" class="block text-center text-blue-500 hover:underline mt-2">Watch on YouTube</a>
+    </div>
+    <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white dark:bg-gray-800">
+      <iframe src="https://www.youtube.com/embed/wEu4RqxEIB0" title="Black History Month 2024: Gospel Music Evolution" allow="encrypted-media" class="w-full h-full" loading="lazy"></iframe>
+      <a href="https://www.youtube.com/watch?v=wEu4RqxEIB0" target="_blank" class="block text-center text-blue-500 hover:underline mt-2">Watch on YouTube</a>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="p-8 animate__animated animate__fadeIn">
+    <h2 class="text-2xl font-bold mb-4">Upcoming Events</h2>
+    <div id="calendar" class="max-w-4xl mx-auto"></div>
+  </section>
+
+  <!-- Prayer Request Form -->
+  <section id="prayer" class="p-8 animate__animated animate__fadeIn">
+    <h2 class="text-2xl font-bold mb-4">Submit a Prayer Request</h2>
+    <form id="prayer-form" class="max-w-md mx-auto">
+      <input type="text" id="name" placeholder="Your Name" class="w-full p-2 mb-4 border rounded" required>
+      <textarea id="request" placeholder="Your Prayer Request" class="w-full p-2 mb-4 border rounded" rows="4" required></textarea>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors">Submit</button>
+    </form>
+  </section>
+
+  <!-- Posts Section -->
+  <section id="posts" class="p-8 space-y-8 animate__animated animate__fadeIn">
+    <h2 class="text-2xl font-bold mb-4">Latest Posts</h2>
+    <div id="posts-container" class="grid md:grid-cols-2 gap-6"></div>
+  </section>
+
+  <footer class="text-center py-6 text-sm opacity-70">
+    © 2025 Unified in Christ Ministry - Pastor Kavin Bobbitt
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
