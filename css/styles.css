@@ -40,7 +40,9 @@ html.dark .bg-gradient-to-r {
 
 /* Active navigation link */
 .nav-link.active {
-  @apply underline;
+  @apply underline bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
 }
 
 /* Ripple effect for touch/click */
@@ -62,9 +64,12 @@ html.dark .bg-gradient-to-r {
   }
 }
 
-/* Aspect ratio for video iframes */
+/* Aspect ratio for video iframes with thumbnail fallback */
 .aspect-video {
   aspect-ratio: 16 / 9;
+}
+.aspect-video iframe:not([src]) {
+  background: url('https://img.youtube.com/vi/MnnpCZcyYiI/hqdefault.jpg') center/cover no-repeat;
 }
 
 /* Focus states for accessibility */
@@ -78,8 +83,13 @@ html.dark .bg-gradient-to-r {
   transform: scale(1.2);
 }
 
+/* Social/contact links with larger tap targets */
+a[href*="wa.me"], a[href*="facebook"], a[href*="instagram"], a[href*="youtube"], a[href*="mailto"] {
+  padding: 0.5rem;
+}
+
 /* Image fallback for broken images */
-img[alt="Pastor Josias Uriel"]:not([src]) {
+img[alt="Pastor Josias Uriel"]:not([src]), img[alt="Lala"]:not([src]) {
   background-color: #e5e7eb;
   display: flex;
   align-items: center;
@@ -100,6 +110,10 @@ img[alt="Pastor Josias Uriel"]:not([src]) {
   }
   #revelations img {
     height: 40vw;
+  }
+  #contact img {
+    width: 100px;
+    height: 100px;
   }
 }
 
