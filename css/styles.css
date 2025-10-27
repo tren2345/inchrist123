@@ -77,3 +77,40 @@ html.dark .bg-gradient-to-r {
 .interaction-button:hover {
   transform: scale(1.2);
 }
+
+/* Image fallback for broken images */
+img[alt="Pastor Josias Uriel"]:not([src]) {
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Responsive adjustments for various aspect ratios */
+@media (max-width: 640px) {
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  #home img {
+    max-width: 200px;
+  }
+  #revelations img {
+    height: 40vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  #home img {
+    max-width: 400px;
+  }
+  #revelations img {
+    height: 20vw;
+  }
+  .max-w-4xl {
+    max-width: 1280px;
+  }
+}
