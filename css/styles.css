@@ -1,0 +1,54 @@
+/* Custom styles */
+body {
+  background: linear-gradient(135deg, #f3e7e9, #e3eeff); /* Creative gradient for lively feel */
+  animation: gradient-shift 10s ease infinite alternate;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+body.dark {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+
+body.dark .bg-gray-200 {
+  background-color: #4b5563;
+}
+
+body.dark .border-gray-300 {
+  border-color: #4b5563;
+}
+
+.nav-link.active {
+  @apply underline;
+}
+
+.lang-btn.active {
+  @apply bg-blue-500 text-white;
+}
+
+.ripple {
+  position: fixed;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
