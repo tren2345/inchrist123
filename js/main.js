@@ -1,21 +1,18 @@
-// js/main.js
-// Languages for typing animation (keep cycling, no buttons)
+// Languages for typing animation
 const languages = [
-  { lang: 'Hebrew', text: '“וְכָל הַמְקַבֵּל אֹתוֹ, נָתַן לוֹ זְכוּת לִהְיוֹת בֵּן אֱלֹהִים”' },
-  { lang: 'Aramaic', text: '“ܘܟܠ ܕܩܒܠܘܗܝ ܝܗܒ ܠܗܘܢ ܫܘܠܛܢܐ ܕܢܗܘܘܢ ܒܢܝܐ ܕܐܠܗܐ”' },
-  { lang: 'English (KJV)', text: '“But as many as received him, to them gave he power to become the sons of God.” (John 1:12)' }
+  { text: '“וְכָל הַמְקַבֵּל אֹתוֹ, נָתַן לוֹ זְכוּת לִהְיוֹת בֵּן אֱלֹהִים”' },
+  { text: '“ܘܟܠ ܕܩܒܠܘܗܝ ܝܗܒ ܠܗܘܢ ܫܘܠܛܢܐ ܕܢܗܘܘܢ ܒܢܝܐ ܕܐܠܗܐ”' },
+  { text: '“But as many as received him, to them gave he power to become the sons of God.” (John 1:12)' }
 ];
 
 let languageIndex = 0;
 let charIndex = 0;
 
-// Typing animation
+// Typing animation (no language label)
 function typeText() {
   const text = languages[languageIndex].text;
   const typedText = document.getElementById('typed-text');
-  const languageLabel = document.getElementById('language-label');
   typedText.textContent = text.slice(0, charIndex + 1);
-  languageLabel.textContent = languages[languageIndex].lang;
   charIndex++;
   if (charIndex >= text.length) {
     clearInterval(typingInterval);
@@ -29,10 +26,11 @@ function typeText() {
 
 let typingInterval = setInterval(typeText, 70);
 
-// Theme toggle (updated for html class)
+// Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
   document.documentElement.classList.toggle('dark');
+  document.documentElement.classList.toggle('light');
   const isDark = document.documentElement.classList.contains('dark');
   themeToggle.innerHTML = isDark
     ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
@@ -41,9 +39,34 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// Smooth scrolling, keyboard, touch ripple (keep as is)
+// Smooth scrolling for nav links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-// Remove loadPosts since posts are now hardcoded
+// Keyboard navigation
+document.querySelectorAll('.nav-link, #theme-toggle').forEach(elem => {
+  elem.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      elem.click();
+    }
+  });
+});
+
+// Touch ripple effect
+document.addEventListener('touchstart', (e) => {
+  const ripple = document.getElementById('ripple');
+  ripple.style.left = `${e.touches[0].clientX - 50}px`;
+  ripple.style.top = `${e.touches[0].clientY - 50}px`;
+  ripple.classList.remove('hidden');
+  setTimeout(() => ripple.classList.add('hidden'), 600);
+});
 
 // Event calendar
 document.addEventListener('DOMContentLoaded', () => {
