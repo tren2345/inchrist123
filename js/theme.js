@@ -1,15 +1,26 @@
 // js/theme.js
 export function initThemeToggle() {
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    html.classList.toggle('dark', !isDark);
-    html.classList.toggle('light', isDark);
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    themeToggle.innerHTML = isDark
-      ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
-      : '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 18a6 6 0 01-6-6c0-2.4 1.4-4.5 3.5-5.4A6 6 0 0112 18zM12 6a6 6 0 016 6 6 6 0 01-6 6V6z"/></svg>';
-    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  const toggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  toggle.addEventListener('click', () => {
+    if (html.classList.contains('light')) {
+      html.classList.remove('light');
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      html.classList.remove('dark');
+      html.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    }
   });
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  html.classList.add(savedTheme);
+  if (savedTheme === 'dark') {
+    toggle.querySelector('svg').innerHTML = '<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98.191-1.99.3-3.03.3-4.97 0-9-4.03-9-9 0-1.04.11-2.05.3-3.03.44-.09.9-.14 1.36-.14z"/>'; // Moon icon
+  } else {
+    toggle.querySelector('svg').innerHTML = '<path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>'; // Sun icon
+  }
 }
