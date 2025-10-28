@@ -1,165 +1,94 @@
-/* Custom styles for United in Christ Ministry Portfolio */
-/* Light mode background with gradient animation */
-html.light body {
-  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
-  animation: gradient-shift 10s ease infinite alternate;
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+
+html {
+  transition: background-color 0.5s, color 0.5s;
 }
-/* Dark mode styles */
-html.dark body {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #f3f4f6;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-html.dark .bg-gray-200 {
-  background-color: #4b5563;
-}
-html.dark .border-gray-300 {
-  border-color: #4b5563;
-}
-html.dark .bg-blue-100 {
-  background-color: #1e3a8a;
-}
-html.dark .bg-green-100 {
-  background-color: #14532d;
-}
-/* Gradient for footer in dark mode */
-html.dark .bg-gradient-to-r {
-  background: linear-gradient(to right, #1e3a8a, #14532d);
-}
-/* Active navigation link */
-.nav-link.active {
-  @apply underline bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-}
-/* Ripple effect for touch/click */
-.ripple {
-  position: fixed;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: scale(0);
-  animation: ripple 0.6s ease-out;
-}
-@keyframes ripple {
-  to {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-/* Consistent video card style */
-.video-card {
-  position: relative;
-  aspect-ratio: 16/9;
-  border-radius: 1rem;
-  overflow: hidden;
-  background: var(--card-bg, #fff);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.video-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-/* For dark mode */
-html.dark .video-card {
-  background: #1f2937;
-}
-.video-card iframe {
-  animation: fadeIn 1s ease both;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
-}
-.video-card {
-  border: 1px solid rgba(59,130,246,0.2);
-  background: linear-gradient(to bottom right, rgba(59,130,246,0.05), rgba(147,197,253,0.05));
-}
-/* Focus states for accessibility */
-:focus {
-  outline: none;
-  ring: 2px solid #3b82f6;
-}
-/* Interaction buttons for Twitter-like posts */
-.interaction-button:hover {
-  transform: scale(1.2);
-}
-/* Social/contact links with larger tap targets */
-a[href*="wa.me"], a[href*="facebook"], a[href*="instagram"], a[href*="youtube"], a[href*="mailto"] {
-  padding: 0.5rem;
-}
-/* Image fallback for broken images */
-img[alt="Pastor Josias Uriel"]:not([src]), img[alt="Lala"]:not([src]) {
-  background-color: #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6b7280;
-  font-size: 0.875rem;
-  text-align: center;
-}
-/* Responsive adjustments for various aspect ratios */
-@media (max-width: 640px) {
-  .nav-link {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-  #home img {
-    max-width: 200px;
-  }
-  #revelations img {
-    height: 40vw;
-  }
-  #contact img {
-    width: 100px;
-    height: 100px;
-  }
-  #videos .video-card {
-    aspect-ratio: 16/9;
-  }
-}
-@media (min-width: 1920px) {
-  #home img {
-    max-width: 400px;
-  }
-  #revelations img {
-    height: 20vw;
-  }
-  .max-w-4xl {
-    max-width: 1280px;
-  }
-}
-/* Intersection Observer for Fade-In */
-@keyframes fadeInSection {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+
+/* Light Mode */
 html.light body {
   background: linear-gradient(135deg, #f3e7e9, #e3eeff);
   color: #1f2937;
 }
+
+html.light .bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+html.light .bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+html.light .text-gray-800 {
+  color: #1f2937;
+}
+
+html.light .border-gray-300 {
+  border-color: #d1d5db;
+}
+
+/* Dark Mode */
 html.dark body {
   background: linear-gradient(135deg, #2c3e50, #34495e);
   color: #f3f4f6;
 }
+
+html.dark .bg-gray-50 {
+  background-color: #2d3748;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #4a5568;
+}
+
+html.dark .text-gray-800 {
+  color: #e2e8f0;
+}
+
+html.dark .border-gray-300 {
+  border-color: #4b5563;
+}
+
 html.dark .bg-gray-200 {
   background-color: #4b5563;
 }
-html.dark .border-gray-300 {
-  border-color: #4b5563;
+
+/* Navigation */
+nav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: #e0f2fe;
+}
+
+html.dark nav a:hover,
+html.dark nav a:focus {
+  background-color: #1e40af;
+}
+
+/* Sections */
+section {
+  padding-top: 4rem; /* Adjusted to prevent nav overlap */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .md:grid-cols-2 {
+    grid-template-columns: 1fr; /* Stack grids on mobile */
+  }
+  .flex-col.md:flex-row {
+    flex-direction: column;
+  }
 }
