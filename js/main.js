@@ -11,4 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initNavigation();
   initRipple();
+
+  // Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
 });
