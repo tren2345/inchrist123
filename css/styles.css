@@ -83,14 +83,37 @@ section {
   padding-top: 4rem;
 }
 
-/* Ripple Effect */
+/* Ripple Effects */
 #ripple-effect {
   opacity: 0;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
-  animation: gravitationalWave 1s ease-out forwards;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
 }
 
-@keyframes gravitationalWave {
+#ripple-effect.dark-ripple {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+  animation: gravitationalWaveDark 1s ease-out forwards;
+}
+
+#ripple-effect.light-ripple {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  animation: gravitationalWaveLight 1s ease-out forwards;
+}
+
+@keyframes gravitationalWaveDark {
+  0% {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2); /* Expands to cover the screen */
+  }
+}
+
+@keyframes gravitationalWaveLight {
   0% {
     opacity: 0.8;
     transform: scale(0);
