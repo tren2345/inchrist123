@@ -6,7 +6,7 @@
 }
 
 html {
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 1s ease, color 1s ease; /* Synchronized with ripple duration */
 }
 
 body {
@@ -80,13 +80,31 @@ html.dark nav a:focus {
 
 /* Sections */
 section {
-  padding-top: 4rem; /* Adjusted to prevent nav overlap */
+  padding-top: 4rem;
+}
+
+/* Ripple Effect */
+#ripple-effect {
+  opacity: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+  animation: gravitationalWave 1s ease-out forwards;
+}
+
+@keyframes gravitationalWave {
+  0% {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2); /* Expands to cover the screen */
+  }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .md:grid-cols-2 {
-    grid-template-columns: 1fr; /* Stack grids on mobile */
+    grid-template-columns: 1fr;
   }
   .flex-col.md:flex-row {
     flex-direction: column;
