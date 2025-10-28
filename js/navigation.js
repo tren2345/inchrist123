@@ -1,11 +1,11 @@
 // js/navigation.js
 export function initNavigation() {
-  // Smooth scrolling for nav links
+  // Smooth scrolling and active highlight for nav links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-blue-600'));
+      link.classList.add('text-blue-600');
       document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
   });
