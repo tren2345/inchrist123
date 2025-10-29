@@ -28,10 +28,12 @@ export function initThemeToggle() {
 
   toggle.addEventListener('click', () => {
     const next = html.classList.contains('light') ? 'dark' : 'light';
+    html.classList.add('theme-transition');
     html.classList.remove('light', 'dark');
     html.classList.add(next);
     localStorage.setItem('theme', next);
     setIcon(next);
+    window.setTimeout(() => html.classList.remove('theme-transition'), 250);
   });
 }
 
