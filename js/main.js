@@ -2,6 +2,7 @@
 import { initTyping } from './typing.js';
 import { initCalendar } from './calendar.js';
 import { initThemeToggle } from './theme.js';
+import { initAnimations } from './animations.js';
 import { initNavigation } from './navigation.js';
 import { initRipple } from './ripple.js';
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initNavigation();
   initRipple();
+  initAnimations();
 
   // Service Worker Registration
   if ('serviceWorker' in navigator) {
