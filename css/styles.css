@@ -133,3 +133,25 @@ section {
     flex-direction: column;
   }
 }
+
+/* Overlay Menu */
+#overlay-menu a { color: inherit; }
+#overlay-menu a:hover { text-decoration: underline; }
+
+/* Dot Nav */
+.dot-nav-item { opacity: 0.5; transition: transform 0.2s, opacity 0.2s; }
+.dot-nav-item.active { opacity: 1; transform: scale(1.2); background-color: #3b82f6; }
+
+/* Preloader hidden state applied via JS */
+#preloader.hidden { display: none; }
+
+/* Basic slideshow helpers */
+#portfolio-slideshow .slide { transition: opacity 300ms ease; }
+
+/* Portfolio Vertical Story images (moved from inline styles) */
+.story-img-1 { background-image: url('../images/revelation1.jpg'); }
+.story-img-2 { background-image: url('../images/revelation2.jpg'); }
+.story-img-3 { background-image: url('../images/ministry-assistant.jpg'); }
+
+/* Lottie container size (moved from inline styles) */
+.lottie-size { width: 120px; height: 120px; }
