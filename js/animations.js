@@ -1,10 +1,6 @@
 // js/animations.js
 export function initAnimations() {
-  // Preloader hide after window load
-  window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) preloader.classList.add('hidden');
-  });
+  // Preloader removed
 
   // Scroll-triggered animations
   const animated = document.querySelectorAll('[data-animate], section');
@@ -35,20 +31,44 @@ export function initAnimations() {
     if (src && !el.src) el.src = src;
   }
   if (supportsIframeLoading) {
-    lazyIframes.forEach(loadIframe);
+    lazyIframes.forEach(el => {
+      el.closest('.aspect-video')?.classList.add('skeleton');
+      el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
+      loadIframe(el);
+    });
   } else if ('IntersectionObserver' in window) {
     const iof = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        loadIframe(entry.target);
+        const el = entry.target;
+        el.closest('.aspect-video')?.classList.add('skeleton');
+        el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
+        loadIframe(el);
         obs.unobserve(entry.target);
       });
     }, { rootMargin: '200px 0px' });
     lazyIframes.forEach(el => iof.observe(el));
   } else {
     // Ultimate fallback
-    lazyIframes.forEach(loadIframe);
+    lazyIframes.forEach(el => {
+      el.closest('.aspect-video')?.classList.add('skeleton');
+      el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
+      loadIframe(el);
+    });
   }
+
+  // Share buttons (moved off inline handlers for CSP)
+  document.querySelectorAll('.share-btn[data-share-url]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-share-url');
+      if (!url) return;
+      if (navigator.share) {
+        navigator.share({ url }).catch(() => window.open(url, '_blank'));
+      } else {
+        window.open(url, '_blank');
+      }
+    });
+  });
 
   // Lottie animation init with inline data (no external fetch needed)
   const lottieContainer = document.getElementById('lottie-container');
