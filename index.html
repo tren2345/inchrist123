@@ -89,12 +89,12 @@
     <div id="overlay-menu" class="fixed inset-0 z-40 hidden bg-white/95 dark:bg-gray-900/95" role="dialog" aria-modal="true" aria-hidden="true">
         <button id="close-overlay-menu" class="absolute top-4 right-4 p-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Close menu" title="Close menu">✕</button>
         <ul class="h-full flex flex-col items-center justify-center space-y-6 text-2xl">
-            <li><a href="#home" class="overlay-link">Home</a></li>
-            <li><a href="#videos" class="overlay-link">Videos</a></li>
-            <li><a href="#events" class="overlay-link">Events</a></li>
-            <li><a href="#contact" class="overlay-link">Contact</a></li>
-            <li><a href="#revelations" class="overlay-link">Revelations</a></li>
-            <li><a href="#portfolio" class="overlay-link">Portfolio</a></li>
+            <li><a class="overlay-link" href="#home">Home</a></li>
+            <li><a class="overlay-link" href="#videos">Videos</a></li>
+            <li><a class="overlay-link" href="#events">Events</a></li>
+            <li><a class="overlay-link" href="#contact">Contact</a></li>
+            <li><a class="overlay-link" href="#revelations">Revelations</a></li>
+            <li><a class="overlay-link" href="#portfolio">Portfolio</a></li>
         </ul>
     </div>
     <main id="main-content">
@@ -413,6 +413,26 @@
         }
     </script>
     <!-- Scripts -->
-    <script type="module" src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
+    <script src="js/typing.js" type="module" defer></script>
+    <script src="js/calendar.js" type="module" defer></script>
+    <script src="js/theme.js" type="module"></script> <!-- No defer -->
+    <script src="js/navigation.js" type="module" defer></script>
+    <script src="js/animations.js" type="module" defer></script>
+    <script src="js/portfolio.js" type="module" defer></script>
+    <script src="js/ripple.js" type="module" defer></script>
+    <script src="js/main.js" type="module" defer></script>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function(e) {
+            const dropdown = document.getElementById('menu-dropdown');
+            if (window.innerWidth <= 768) {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+    </script>
 </body>
 </html>
