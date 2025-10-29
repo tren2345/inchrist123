@@ -142,6 +142,7 @@
         <a href="https://www.youtube.com/watch?v=S-IFCaO4A4s" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
       </div>
 <!-- Unfiltered Truth Podcast Section -->
+
 <section class="py-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
   <div class="container mx-auto px-4">
     <!-- Header with Logo -->
@@ -160,68 +161,44 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Video 1 -->
       <div class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-100 dark:bg-gray-800">
-        <div class="aspect-video">
-          <iframe 
-            data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_1}&show_text=false&width=560"
-            title="Unfiltered Truth Podcast Episode 1"
-            allow="encrypted-media; fullscreen"
-            class="w-full h-full lazy-iframe"
-            allowfullscreen
-          ></iframe>
-        </div>
+        <video controls class="w-full h-full aspect-video">
+          <source src="videos/Video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
         <div class="p-4 text-center">
           <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 1: Unfiltered Insights</h4>
-          <div class="flex justify-center space-x-4">
-            <a 
-              href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="text-blue-500 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Watch on Facebook
-            </a>
-            <button 
-              data-share-url="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}"
-              class="share-btn text-green-500 hover:text-green-600 font-medium transition-colors duration-200"
-            >
-              Share
-            </button>
-          </div>
+          <a 
+            href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          >
+            Watch on Facebook
+          </a>
         </div>
       </div>
 
       <!-- Video 2 -->
       <div class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-100 dark:bg-gray-800">
-        <div class="aspect-video">
-          <iframe 
-            data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_2}&show_text=false&width=560"
-            title="Unfiltered Truth Podcast Episode 2"
-            allow="encrypted-media; fullscreen"
-            class="w-full h-full lazy-iframe"
-            allowfullscreen
-          ></iframe>
-        </div>
+        <video controls class="w-full h-full aspect-video">
+          <source src="videos/Video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
         <div class="p-4 text-center">
           <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 2: Breaking Barriers</h4>
-          <div class="flex justify-center space-x-4">
-            <a 
-              href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="text-blue-500 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Watch on Facebook
-            </a>
-            <button 
-              data-share-url="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}"
-              class="share-btn text-green-500 hover:text-green-600 font-medium transition-colors duration-200"
-            >
-              Share
-            </button>
-          </div>
+          <a 
+            href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          >
+            Watch on Facebook
+          </a>
         </div>
       </div>
-      <!-- Add more videos as needed using the same format -->
+
+      <!-- Repeat for Video3.mp4 to Video5.mp4 -->
+      <!-- Just duplicate the block and update the src and title -->
     </div>
   </div>
 </section>
