@@ -20,6 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@unitedinchristmin">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/logo320.jpg">
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="css/styles.css" as="style">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -33,6 +34,10 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 transition-colors duration-700 animate__animated animate__fadeIn overflow-x-hidden pb-16" id="body">
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900">
+    <div class="animate-spin h-10 w-10 rounded-full border-4 border-blue-500 border-t-transparent"></div>
+  </div>
   <!-- Ripple Effect Container -->
   <div id="ripple-effect" class="fixed inset-0 pointer-events-none z-30"></div>
   <!-- Touch Ripple Effect -->
@@ -57,15 +62,34 @@
   </svg>
   <!-- Navigation -->
   <nav class="flex justify-center items-center space-x-6 py-4 border-b border-gray-300 bg-opacity-30 backdrop-blur-lg sticky top-0 z-20 shadow-md px-4 flex-wrap">
+    <button id="open-overlay-menu" class="md:hidden p-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Open menu" title="Open menu">
+      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
+      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
+      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
+    </button>
     <a href="#home" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Home">Home</a>
     <a href="#videos" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Videos">Videos</a>
     <a href="#events" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Events">Events</a>
     <a href="#contact" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Contact">Contact for Prayer</a>
     <a href="#revelations" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Revelations">Revelations</a>
+    <a href="#portfolio" class="nav-link px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Go to Portfolio">Portfolio</a>
     <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Toggle Dark/Light Mode" aria-label="Switch to dark mode">
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     </button>
   </nav>
+
+  <!-- Fullscreen Overlay Navigation -->
+  <div id="overlay-menu" class="fixed inset-0 z-40 hidden bg-white/95 dark:bg-gray-900/95">
+    <button id="close-overlay-menu" class="absolute top-4 right-4 p-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Close menu" title="Close menu">✕</button>
+    <ul class="h-full flex flex-col items-center justify-center space-y-6 text-2xl">
+      <li><a class="overlay-link" href="#home">Home</a></li>
+      <li><a class="overlay-link" href="#videos">Videos</a></li>
+      <li><a class="overlay-link" href="#events">Events</a></li>
+      <li><a class="overlay-link" href="#contact">Contact</a></li>
+      <li><a class="overlay-link" href="#revelations">Revelations</a></li>
+      <li><a class="overlay-link" href="#portfolio">Portfolio</a></li>
+    </ul>
+  </div>
   <!-- Home Section -->
   <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center p-4 pt-16 animate__animated animate__fadeIn bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
     <div class="flex flex-col md:flex-row items-center gap-6 max-w-4xl mx-auto">
@@ -87,25 +111,35 @@
       </a>
     </div>
   </section>
+
+  <!-- Side Dot Vertical Navigation -->
+  <div id="dot-nav" class="fixed right-4 top-1/2 -translate-y-1/2 z-10 hidden md:block">
+    <a href="#home" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Home"></a>
+    <a href="#videos" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Videos"></a>
+    <a href="#events" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Events"></a>
+    <a href="#contact" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Contact"></a>
+    <a href="#revelations" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Revelations"></a>
+    <a href="#portfolio" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300" aria-label="Go to Portfolio"></a>
+  </div>
   <!-- Videos Section -->
   <section id="videos" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
     <h2 class="text-2xl font-bold mb-4 text-center">Sermons & Messages by Prophet Josias Uriel</h2>
     <div class="grid md:grid-cols-2 gap-6">
       <!-- YouTube Videos -->
       <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe src="https://www.youtube.com/embed/MnnpCZcyYiI" title="The Power of Faith in Christ" allow="encrypted-media" class="w-full h-full" loading="lazy" allowfullscreen></iframe>
+        <iframe data-src="https://www.youtube.com/embed/MnnpCZcyYiI" title="The Power of Faith in Christ" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
         <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
       </div>
       <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe src="https://www.youtube.com/embed/vwsWuBSVxbs" title="The Kingdom Mindset" allow="encrypted-media" class="w-full h-full" loading="lazy" allowfullscreen></iframe>
+        <iframe data-src="https://www.youtube.com/embed/vwsWuBSVxbs" title="The Kingdom Mindset" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
         <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
       </div>
       <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe src="https://www.youtube.com/embed/kEj4c_ayeDY" title="How to Access the Kingdom" allow="encrypted-media" class="w-full h-full" loading="lazy" allowfullscreen></iframe>
+        <iframe data-src="https://www.youtube.com/embed/kEj4c_ayeDY" title="How to Access the Kingdom" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
         <a href="https://www.youtube.com/watch?v=kEj4c_ayeDY" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
       </div>
       <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe src="https://www.youtube.com/embed/S-IFCaO4A4s" title="Walking in God’s Grace" allow="encrypted-media" class="w-full h-full" loading="lazy" allowfullscreen></iframe>
+        <iframe data-src="https://www.youtube.com/embed/S-IFCaO4A4s" title="Walking in God’s Grace" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
         <a href="https://www.youtube.com/watch?v=S-IFCaO4A4s" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
       </div>
 <!-- Unfiltered Truth Podcast Section -->
@@ -129,11 +163,10 @@
       <div class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-100 dark:bg-gray-800">
         <div class="aspect-video">
           <iframe 
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_1}&show_text=false&width=560"
+            data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_1}&show_text=false&width=560"
             title="Unfiltered Truth Podcast Episode 1"
             allow="encrypted-media; fullscreen"
-            class="w-full h-full"
-            loading="lazy"
+            class="w-full h-full lazy-iframe"
             allowfullscreen
           ></iframe>
         </div>
@@ -162,11 +195,10 @@
       <div class="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-100 dark:bg-gray-800">
         <div class="aspect-video">
           <iframe 
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_2}&show_text=false&width=560"
+            data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_2}&show_text=false&width=560"
             title="Unfiltered Truth Podcast Episode 2"
             allow="encrypted-media; fullscreen"
-            class="w-full h-full"
-            loading="lazy"
+            class="w-full h-full lazy-iframe"
             allowfullscreen
           ></iframe>
         </div>
@@ -198,11 +230,10 @@
 <!-- Repeat for other videos -->
 <!-- Video 2 -->
 <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-  <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_2}&show_text=false&width=560"
+  <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F{PAGE_NAME}%2Fvideos%2F{VIDEO_ID_2}&show_text=false&width=560"
     title="Unfiltered Truth Podcast Video 2"
     allow="encrypted-media; fullscreen"
-    class="w-full h-full"
-    loading="lazy"
+    class="w-full h-full lazy-iframe"
     allowfullscreen>
   </iframe>
   <div class="text-center mt-2">
@@ -217,6 +248,69 @@
   <section id="events" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
     <h2 class="text-2xl font-bold mb-4 text-center">Upcoming Events</h2>
     <div id="calendar" class="max-w-4xl mx-auto"></div>
+  </section>
+
+  <!-- Portfolio Section (Tiled + Slideshow + Lottie demo) -->
+  <section id="portfolio" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
+    <h2 class="text-2xl font-bold mb-6 text-center">Portfolio</h2>
+    <!-- Layout Switcher -->
+    <div class="flex justify-center mb-6 space-x-2">
+      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="tiled">Tiled</button>
+      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="slideshow">Slideshow</button>
+      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="vertical">Vertical Scroll</button>
+    </div>
+    <!-- Tiled Navigation -->
+    <div id="portfolio-tiled" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
+        <img src="images/revelation1.jpg" alt="Project 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4">
+          <h3 class="font-semibold">Project 1</h3>
+          <p class="text-sm opacity-80">Description of project 1.</p>
+        </div>
+      </div>
+      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
+        <img src="images/revelation2.jpg" alt="Project 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4">
+          <h3 class="font-semibold">Project 2</h3>
+          <p class="text-sm opacity-80">Description of project 2.</p>
+        </div>
+      </div>
+      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
+        <img src="images/ministry-assistant.jpg" alt="Project 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4">
+          <h3 class="font-semibold">Project 3</h3>
+          <p class="text-sm opacity-80">Description of project 3.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slideshow Navigation -->
+    <div id="portfolio-slideshow" class="hidden relative max-w-4xl mx-auto mt-8">
+      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800">
+        <img src="images/revelation1.jpg" alt="Slide 1" class="w-full h-80 object-cover">
+      </div>
+      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hidden">
+        <img src="images/revelation2.jpg" alt="Slide 2" class="w-full h-80 object-cover">
+      </div>
+      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hidden">
+        <img src="images/ministry-assistant.jpg" alt="Slide 3" class="w-full h-80 object-cover">
+      </div>
+      <button id="prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 px-3 py-2 rounded-full bg-gray-200 dark:bg-gray-700">‹</button>
+      <button id="next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-2 rounded-full bg-gray-200 dark:bg-gray-700">›</button>
+    </div>
+
+    <!-- Vertical Scroll Story (parallax placeholder) -->
+    <div id="portfolio-vertical" class="hidden space-y-12 max-w-3xl mx-auto mt-8">
+      <div class="story-block story-img-1 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
+      <div class="story-block story-img-2 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
+      <div class="story-block story-img-3 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
+    </div>
+
+    <!-- Lottie Animation Demo -->
+    <div class="max-w-3xl mx-auto mt-12 text-center">
+      <h3 class="font-semibold mb-2">Smooth Icon Animation</h3>
+      <div id="lottie-container" class="mx-auto lottie-size"></div>
+    </div>
   </section>
   <!-- Contact for Prayer Section -->
   <section id="contact" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
@@ -340,10 +434,13 @@
   <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
   <script src="js/typing.js" type="module" defer></script>
   <script src="js/calendar.js" type="module" defer></script>
   <script src="js/theme.js" type="module"></script> <!-- No defer -->
   <script src="js/navigation.js" type="module" defer></script>
+  <script src="js/animations.js" type="module" defer></script>
+  <script src="js/portfolio.js" type="module" defer></script>
   <script src="js/ripple.js" type="module" defer></script>
   <script src="js/main.js" type="module" defer></script>
 </body>
