@@ -33,4 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  // Cookie banner simple logic
+  try {
+    const banner = document.getElementById('cookie-banner');
+    const accept = document.getElementById('cookie-accept');
+    if (banner && accept) {
+      if (!localStorage.getItem('cookieAccepted')) {
+        banner.classList.remove('hidden');
+      }
+      accept.addEventListener('click', () => {
+        localStorage.setItem('cookieAccepted', 'true');
+        banner.classList.add('hidden');
+      });
+    }
+  } catch (_) {}
 });
