@@ -23,39 +23,45 @@ export function initAnimations() {
     });
   });
 
-  // Lazy-load iframes (fallback for browsers without iframe loading)
+  // Lazy-load iframes (improved with fallback for immediate load)
   const supportsIframeLoading = 'loading' in HTMLIFrameElement.prototype;
   const lazyIframes = Array.from(document.querySelectorAll('iframe.lazy-iframe'));
   function loadIframe(el) {
     const src = el.getAttribute('data-src');
-    if (src && !el.src) el.src = src;
+    if (src && !el.src) {
+      el.src = src;
+      el.removeAttribute('data-src'); // Prevent re-loading
+    }
   }
-  if (supportsIframeLoading) {
-    lazyIframes.forEach(el => {
-      el.closest('.aspect-video')?.classList.add('skeleton');
-      el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
+
+  // Immediate load fallback if no observer support
+  if (!('IntersectionObserver' in window)) {
+    lazyIframes.forEach(loadIframe);
+    return;
+  }
+
+  // Add shimmer skeleton
+  lazyIframes.forEach(el => {
+    el.closest('.aspect-video')?.classList.add('skeleton');
+  });
+
+  const iof = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
       loadIframe(el);
-    });
-  } else if ('IntersectionObserver' in window) {
-    const iof = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.closest('.aspect-video')?.classList.add('skeleton');
-        el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
-        loadIframe(el);
-        obs.unobserve(entry.target);
+      el.addEventListener('load', () => {
+        el.closest('.aspect-video')?.classList.remove('skeleton');
       });
-    }, { rootMargin: '200px 0px' });
-    lazyIframes.forEach(el => iof.observe(el));
-  } else {
-    // Ultimate fallback
-    lazyIframes.forEach(el => {
-      el.closest('.aspect-video')?.classList.add('skeleton');
-      el.addEventListener('load', () => el.closest('.aspect-video')?.classList.remove('skeleton'));
-      loadIframe(el);
+      el.addEventListener('error', () => {
+        console.error('YouTube embed failed to load:', el.src);
+        el.closest('.aspect-video')?.innerHTML = '<p class="text-center p-4 text-red-500">Video unavailable. <a href="' + el.src + '" target="_blank" class="underline">Watch on YouTube</a></p>';
+      });
+      obs.unobserve(entry.target);
     });
-  }
+  }, { rootMargin: '200px 0px' });
+
+  lazyIframes.forEach(el => iof.observe(el));
 
   // Share buttons (moved off inline handlers for CSP)
   document.querySelectorAll('.share-btn[data-share-url]').forEach(btn => {
@@ -139,4 +145,3 @@ export function initAnimations() {
 
 // Auto-init when module is loaded via main.js as well
 document.addEventListener('DOMContentLoaded', initAnimations);
-
