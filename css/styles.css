@@ -1,153 +1,71 @@
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Existing CSS remains unchanged, add these rules if not present */
+
+/* Dropdown Menu */
+#menu-toggle {
+    display: flex;
+    align-items: center;
 }
 
-html {
-  transition: background-color 1s ease, color 1s ease; /* Synchronized with ripple duration */
-}
-/* Skip link */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #1f2937;
-  color: #fff;
-  padding: 8px 12px;
-  z-index: 50;
-}
-.skip-link:focus { top: 8px; }
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+#menu-dropdown {
+    display: none;
 }
 
-/* Higher contrast tweak */
-@media (prefers-contrast: more) {
-  .shadow-md, .shadow-lg, .shadow-xl { box-shadow: 0 0 0 1px rgba(0,0,0,0.2); }
+#menu-toggle:focus + #menu-dropdown,
+#menu-toggle:hover + #menu-dropdown {
+    display: block;
 }
 
-/* Skeleton placeholder for lazy iframes */
-.aspect-video { position: relative; }
-.skeleton::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.08) 37%, rgba(0,0,0,0.05) 63%);
-  animation: shimmer 1.4s infinite;
-}
-@keyframes shimmer {
-  0% { background-position: -40rem 0; }
-  100% { background-position: 40rem 0; }
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-/* Light Mode */
-html.light body {
-  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
-  color: #1f2937;
-}
-
-html.light .bg-gray-50 {
-  background-color: #f9fafb;
-}
-
-html.light .bg-gray-100 {
-  background-color: #f3f4f6;
-}
-
-html.light .text-gray-800 {
-  color: #1f2937;
-}
-
-html.light .border-gray-300 {
-  border-color: #d1d5db;
-}
-
-/* Dark Mode */
-html.dark body {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #f3f4f6;
-}
-
-html.dark .bg-gray-50 {
-  background-color: #2d3748;
-}
-
-html.dark .bg-gray-100 {
-  background-color: #4a5568;
-}
-
-html.dark .text-gray-800 {
-  color: #e2e8f0;
-}
-
-html.dark .border-gray-300 {
-  border-color: #4b5563;
-}
-
-html.dark .bg-gray-200 {
-  background-color: #4b5563;
-}
-
-/* Navigation */
-nav {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-nav a:hover,
-nav a:focus {
-  background-color: #e0f2fe;
-}
-
-html.dark nav a:hover,
-html.dark nav a:focus {
-  background-color: #1e40af;
-}
-
-/* Sections */
-section {
-  padding-top: 4rem;
-}
-
-/* Smooth UI */
-html { scroll-behavior: smooth; }
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .md:grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
-  .flex-col.md:flex-row {
-    flex-direction: column;
-  }
+    #menu-dropdown {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        dark:bg-gray-900/95;
+        border-top: 1px solid #d1d5db;
+        dark:border-gray-700;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #menu-dropdown a {
+        padding: 1rem;
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    #menu-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #theme-toggle {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (min-width: 769px) {
+    #menu-dropdown {
+        position: absolute;
+    }
+
+    #menu-toggle:focus + #menu-dropdown,
+    #menu-toggle:hover + #menu-dropdown {
+        display: block;
+    }
 }
 
 /* Overlay Menu */
-#overlay-menu a { color: inherit; }
-#overlay-menu a:hover { text-decoration: underline; }
+#overlay-menu {
+    display: none;
+}
 
-/* Dot Nav */
-.dot-nav-item { opacity: 0.5; transition: transform 0.2s, opacity 0.2s; }
-.dot-nav-item.active { opacity: 1; transform: scale(1.2); background-color: #3b82f6; }
-
-/* Removed preloader */
-
-/* Basic slideshow helpers */
-#portfolio-slideshow .slide { transition: opacity 300ms ease; }
-
-/* Portfolio Vertical Story images (moved from inline styles) */
-.story-img-1 { background-image: url('../images/revelation1.jpg'); }
-.story-img-2 { background-image: url('../images/revelation2.jpg'); }
-.story-img-3 { background-image: url('../images/ministry-assistant.jpg'); }
-
-/* Lottie container size (moved from inline styles) */
-.lottie-size { width: 120px; height: 120px; }
+#overlay-menu.hidden {
+    display: none;
+}
