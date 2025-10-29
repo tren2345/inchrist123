@@ -39,3 +39,4 @@ export function initThemeToggle() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', initThemeToggle);
+
