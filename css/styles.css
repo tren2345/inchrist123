@@ -38,3 +38,22 @@
 .scale-110 {
   transform: scale(1.1);
 }
+
+/* Smooth section reveal */
+section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 500ms ease, transform 600ms ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth theme toggle without content flashing */
+html.theme-transition *,
+html.theme-transition :before,
+html.theme-transition :after {
+  transition: color 200ms linear, background-color 200ms linear, border-color 200ms linear, fill 200ms linear, stroke 200ms linear;
+}
