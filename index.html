@@ -73,12 +73,12 @@
                 </svg>
             </button>
             <div id="menu-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg hidden z-20">
-                <a href="#home" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Home">Home</a>
-                <a href="#videos" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Videos">Videos</a>
-                <a href="#events" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Events">Events</a>
-                <a href="#contact" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Contact">Contact for Prayer</a>
-                <a href="#revelations" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Revelations">Revelations</a>
-                <a href="#portfolio" class="nav-link block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Portfolio">Portfolio</a>
+                <a href="#home" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Home">Home</a>
+                <a href="#videos" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Videos">Videos</a>
+                <a href="#events" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Events">Events</a>
+                <a href="#contact" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Contact">Contact for Prayer</a>
+                <a href="#revelations" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Revelations">Revelations</a>
+                <a href="#portfolio" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Portfolio">Portfolio</a>
             </div>
         </div>
         <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Toggle Dark/Light Mode" aria-label="Switch to dark mode">
@@ -89,12 +89,12 @@
     <div id="overlay-menu" class="fixed inset-0 z-40 hidden bg-white/95 dark:bg-gray-900/95" role="dialog" aria-modal="true" aria-hidden="true">
         <button id="close-overlay-menu" class="absolute top-4 right-4 p-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Close menu" title="Close menu">✕</button>
         <ul class="h-full flex flex-col items-center justify-center space-y-6 text-2xl">
-            <li><a href="#home" class="overlay-link nav-link">Home</a></li>
-            <li><a href="#videos" class="overlay-link nav-link">Videos</a></li>
-            <li><a href="#events" class="overlay-link nav-link">Events</a></li>
-            <li><a href="#contact" class="overlay-link nav-link">Contact</a></li>
-            <li><a href="#revelations" class="overlay-link nav-link">Revelations</a></li>
-            <li><a href="#portfolio" class="overlay-link nav-link">Portfolio</a></li>
+            <li><a href="#home" class="overlay-link">Home</a></li>
+            <li><a href="#videos" class="overlay-link">Videos</a></li>
+            <li><a href="#events" class="overlay-link">Events</a></li>
+            <li><a href="#contact" class="overlay-link">Contact</a></li>
+            <li><a href="#revelations" class="overlay-link">Revelations</a></li>
+            <li><a href="#portfolio" class="overlay-link">Portfolio</a></li>
         </ul>
     </div>
     <main id="main-content">
@@ -132,24 +132,21 @@
         <section id="videos" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
             <h2 class="text-2xl font-bold mb-4 text-center">Sermons & Messages by Prophet Josias Uriel</h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- YouTube Video 1 -->
-                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800 skeleton">
-                    <iframe data-src="https://www.youtube.com/embed/MnnpCZcyYiI" title="The Power of Faith in Christ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
+                <!-- YouTube Videos -->
+                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
+                    <iframe data-src="https://www.youtube.com/embed/MnnpCZcyYiI" title="The Power of Faith in Christ" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
                     <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
                 </div>
-                <!-- YouTube Video 2 -->
-                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800 skeleton">
-                    <iframe data-src="https://www.youtube.com/embed/vwsWuBSVxbs" title="The Kingdom Mindset" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
+                    <iframe data-src="https://www.youtube.com/embed/vwsWuBSVxbs" title="The Kingdom Mindset" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
                     <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
                 </div>
-                <!-- YouTube Video 3 -->
-                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800 skeleton">
-                    <iframe data-src="https://www.youtube.com/embed/kEj4c_ayeDY" title="How to Access the Kingdom" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
+                    <iframe data-src="https://www.youtube.com/embed/kEj4c_ayeDY" title="How to Access the Kingdom" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
                     <a href="https://www.youtube.com/watch?v=kEj4c_ayeDY" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
                 </div>
-                <!-- YouTube Video 4 -->
-                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800 skeleton">
-                    <iframe data-src="https://www.youtube.com/embed/S-IFCaO4A4s" title="Walking in God’s Grace" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
+                    <iframe data-src="https://www.youtube.com/embed/S-IFCaO4A4s" title="Walking in God’s Grace" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
                     <a href="https://www.youtube.com/watch?v=S-IFCaO4A4s" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
                 </div>
             </div>
@@ -164,11 +161,11 @@
                     </div>
                     <!-- Video Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Video 1 -->
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all skeleton">
-                            <video controls class="w-full h-full">
+                        <!-- Video Template -->
+                        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
+                            <video controls class="w-full aspect-video">
                                 <source src="videos/Video1.mp4" type="video/mp4">
-                                <p class="text-center p-4 text-red-500">Video unavailable. <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}" target="_blank" class="underline">Watch on Facebook</a></p>
+                                Your browser does not support the video tag.
                             </video>
                             <div class="p-4 text-center">
                                 <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 1: Uttered Insights</h4>
@@ -178,10 +175,10 @@
                             </div>
                         </div>
                         <!-- Video 2 -->
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all skeleton">
-                            <video controls class="w-full h-full">
+                        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
+                            <video controls class="w-full aspect-video">
                                 <source src="videos/Video2.mp4" type="video/mp4">
-                                <p class="text-center p-4 text-red-500">Video unavailable. <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}" target="_blank" class="underline">Watch on Facebook</a></p>
+                                Your browser does not support the video tag.
                             </video>
                             <div class="p-4 text-center">
                                 <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 2: Breaking Barriers</h4>
@@ -191,10 +188,10 @@
                             </div>
                         </div>
                         <!-- Video 3 -->
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all skeleton">
-                            <video controls class="w-full h-full">
+                        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
+                            <video controls class="w-full aspect-video">
                                 <source src="videos/Video3.mp4" type="video/mp4">
-                                <p class="text-center p-4 text-red-500">Video unavailable. <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_3}" target="_blank" class="underline">Watch on Facebook</a></p>
+                                Your browser does not support the video tag.
                             </video>
                             <div class="p-4 text-center">
                                 <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 3: Truth & Transformation</h4>
@@ -204,10 +201,10 @@
                             </div>
                         </div>
                         <!-- Video 4 -->
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all skeleton">
-                            <video controls class="w-full h-full">
+                        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
+                            <video controls class="w-full aspect-video">
                                 <source src="videos/Video4.mp4" type="video/mp4">
-                                <p class="text-center p-4 text-red-500">Video unavailable. <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_4}" target="_blank" class="underline">Watch on Facebook</a></p>
+                                Your browser does not support the video tag.
                             </video>
                             <div class="p-4 text-center">
                                 <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 4: Faith in Action</h4>
@@ -217,10 +214,10 @@
                             </div>
                         </div>
                         <!-- Video 5 -->
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all skeleton">
-                            <video controls class="w-full h-full">
+                        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
+                            <video controls class="w-full aspect-video">
                                 <source src="videos/Video5.mp4" type="video/mp4">
-                                <p class="text-center p-4 text-red-500">Video unavailable. <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_5}" target="_blank" class="underline">Watch on Facebook</a></p>
+                                Your browser does not support the video tag.
                             </video>
                             <div class="p-4 text-center">
                                 <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 5: The Final Word</h4>
