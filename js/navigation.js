@@ -19,4 +19,52 @@ export function initNavigation() {
       }
     });
   });
+
+  // Fullscreen overlay navigation
+  const overlay = document.getElementById('overlay-menu');
+  const openBtn = document.getElementById('open-overlay-menu');
+  const closeBtn = document.getElementById('close-overlay-menu');
+  if (openBtn && overlay) {
+    openBtn.addEventListener('click', () => {
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (closeBtn && overlay) {
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  }
+  overlay?.querySelectorAll('.overlay-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (href) document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Side dot navigation + scrollspy
+  const sections = Array.from(document.querySelectorAll('section'));
+  const dotItems = Array.from(document.querySelectorAll('.dot-nav-item'));
+  function activateDotById(id) {
+    dotItems.forEach(a => a.classList.remove('active'));
+    const match = dotItems.find(a => a.getAttribute('href') === `#${id}`);
+    if (match) match.classList.add('active');
+  }
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) activateDotById(entry.target.id);
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0.01 });
+  sections.forEach(s => spy.observe(s));
+  dotItems.forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = a.getAttribute('href');
+      if (href) document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 }
