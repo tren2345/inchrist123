@@ -38,28 +38,45 @@
   <!-- Touch Ripple Effect -->
   <div id="ripple" class="ripple hidden"></div>
 
-  <!-- Navigation -->
-  <nav class="flex justify-center space-x-8 py-4 border-b border-gray-300 bg-opacity-30 backdrop-blur-lg sticky top-0 z-20 shadow-md">
-    <a href="#home" class="nav-link hover:underline focus:ring-2 focus:ring-blue-500">Home</a>
-    <a href="#videos" class="nav-link hover:underline focus:ring-2 focus:ring-blue-500">Videos</a>
-    <a href="#events" class="nav-link hover:underline focus:ring-2 focus:ring-blue-500">Events</a>
-    <a href="#contact" class="nav-link hover:underline focus:ring-2 focus:ring-blue-500">Contact for Prayer</a>
-    <a href="#revelations" class="nav-link hover:underline focus:ring-2 focus:ring-blue-500">Revelations</a>
-    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 focus:ring-2 focus:ring-blue-500" aria-label="Switch to dark mode">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    </button>
-  </nav>
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="images/logo320.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+        <span class="font-bold tracking-tight text-gray-900 dark:text-white">United in Christ</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#home" class="hover:opacity-80">Home</a>
+        <a href="#videos" class="hover:opacity-80">Sermons</a>
+        <a href="#events" class="hover:opacity-80">Events</a>
+        <a href="#revelations" class="hover:opacity-80">Revelations</a>
+        <a href="#contact" class="hover:opacity-80">Contact</a>
+      </nav>
+      <button id="theme-toggle" class="px-3 py-2 rounded-lg bg-indigo-600 text-white text-sm hover:bg-indigo-500 transition" aria-label="Toggle theme">Say Hello!</button>
+    </div>
+  </header>
 
-  <!-- Home Section -->
-  <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center p-4 animate__animated animate__fadeIn">
-    <div class="flex flex-col md:flex-row items-center gap-6 max-w-4xl mx-auto">
-      <img src="images/pastor-josias-uriel.jpg" alt="Pastor Josias Uriel" class="rounded-2xl shadow-lg w-full max-w-xs md:max-w-sm object-cover aspect-square animate__animated animate__bounceIn" loading="lazy">
+  <!-- Hero Section (split layout) -->
+  <section id="home" class="min-h-[70vh] md:min-h-[80vh] flex items-center p-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
       <div>
-        <p id="typed-text" class="text-lg font-semibold italic max-w-md animate__animated animate__fadeInUp"></p>
-        <p class="mt-4 text-gray-800 dark:text-gray-300 max-w-md">Prophet Josias Uriel, founder of United in Christ Ministry, is a dedicated servant of God, leading with passion in teaching, prayer, and community outreach. His mission is to empower believers through the transformative power of the Gospel.</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white">
+          <span class="hero-accent">Human-Centered</span><br>
+          Design Solutions for Ministry Impact
+        </h1>
+        <p class="mt-4 text-gray-700 dark:text-gray-300 max-w-xl">Prophet Josias Uriel and United in Christ Ministry — sermons, prayer, and outreach dedicated to transforming lives through the Gospel.</p>
+        <div class="flex gap-3 mt-6">
+          <a href="#videos" class="px-4 py-2 rounded-lg bg-gray-900 text-white dark:bg-white dark:text-gray-900 text-sm">Watch Sermons</a>
+          <a href="#events" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm">See Events</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800 p-4">
+          <img src="images/pastor-josias-uriel.jpg" alt="Pastor Josias Uriel" class="rounded-2xl w-full h-auto object-cover">
+        </div>
       </div>
     </div>
-    <div class="flex justify-center space-x-6 mt-6">
+    <div class="flex justify-center space-x-6 mt-8">
       <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" class="hover:scale-110 transition-transform duration-300 p-2" tabindex="0">
         <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
       </a>
@@ -71,6 +88,13 @@
       </a>
     </div>
   </section>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 bg-white dark:bg-gray-800 shadow-xl rounded-full px-5 py-3 flex items-center gap-3 text-sm border border-gray-200 dark:border-gray-700 hidden">
+    <span class="text-gray-700 dark:text-gray-300">We use cookies. </span>
+    <a href="#" class="underline">Learn More</a>
+    <button id="cookie-accept" class="ml-2 px-3 py-1 rounded-full bg-indigo-600 text-white">Got it!</button>
+  </div>
 
   <!-- Videos Section -->
   <section id="videos" class="p-8 grid md:grid-cols-2 gap-6 bg-opacity-20 backdrop-blur-md bg-blue-100 dark:bg-blue-900 animate__animated animate__fadeIn">
