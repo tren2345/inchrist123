@@ -35,11 +35,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-gray-50 text-gray-900 transition-colors duration-700 animate__animated animate__fadeIn overflow-x-hidden pb-16" id="body">
+<body class="bg-gradient-to-br from-pink-50 via-white to-blue-50 dark:from-slate-900 dark:via-gray-900 dark:to-blue-900 text-gray-800 dark:text-gray-100 transition-colors duration-700 animate__animated animate__fadeIn overflow-x-hidden pb-16" id="body">
   <a href="#main-content" class="skip-link">Skip to content</a>
  
   <!-- Touch Ripple Effect -->
   <div id="ripple" class="ripple hidden"></div>
+  
   <!-- SVG Sprite for Social Icons -->
   <svg class="hidden">
     <symbol id="facebook-icon" viewBox="0 0 24 24">
@@ -58,343 +59,758 @@
       <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5z"/>
     </symbol>
   </svg>
-  <!-- Navigation -->
-  <nav class="flex justify-center items-center py-4 border-b border-gray-300 bg-opacity-30 backdrop-blur-lg sticky top-0 z-20 shadow-md px-4 flex-wrap">
-    <button id="open-overlay-menu" class="md:hidden p-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Open menu" title="Open menu">
-      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
-      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200 mb-1"></span>
-      <span class="block w-6 h-0.5 bg-gray-700 dark:bg-gray-200"></span>
-    </button>
-    <div class="relative">
-      <button id="menu-toggle" class="flex items-center px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" aria-label="Toggle menu" title="Toggle menu">
-        <span>Menu</span>
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
-      <div id="menu-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg hidden z-20">
-        <a href="#home" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Home">Home</a>
-        <a href="#videos" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Videos">Videos</a>
-        <a href="#events" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Events">Events</a>
-        <a href="#contact" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Contact">Contact for Prayer</a>
-        <a href="#revelations" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Revelations">Revelations</a>
-        <a href="#portfolio" class="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition duration-200" title="Go to Portfolio">Portfolio</a>
-      </div>
-    </div>
-    <button id="theme-toggle" class="ml-auto p-2 rounded-full bg-gray-200 dark:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" title="Toggle Dark/Light Mode" aria-label="Switch to dark mode">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-    </button>
-  </nav>
-  <!-- Fullscreen Overlay Navigation -->
-  <div id="overlay-menu" class="fixed inset-0 z-40 hidden bg-white/95 dark:bg-gray-900/95" role="dialog" aria-modal="true" aria-hidden="true">
-    <button id="close-overlay-menu" class="absolute top-4 right-4 p-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Close menu" title="Close menu">✕</button>
-    <ul class="h-full flex flex-col items-center justify-center space-y-6 text-2xl">
-      <li><a class="overlay-link" href="#home">Home</a></li>
-      <li><a class="overlay-link" href="#videos">Videos</a></li>
-      <li><a class="overlay-link" href="#events">Events</a></li>
-      <li><a class="overlay-link" href="#contact">Contact</a></li>
-      <li><a class="overlay-link" href="#revelations">Revelations</a></li>
-      <li><a class="overlay-link" href="#portfolio">Portfolio</a></li>
-    </ul>
-  </div>
-  <main id="main-content">
-  <!-- Home Section -->
-  <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center p-4 pt-16 animate__animated animate__fadeIn bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
-    <div class="flex flex-col md:flex-row items-center gap-6 max-w-4xl mx-auto">
-      <img src="images/pastor-josias-uriel.jpg" alt="Pastor Josias Uriel" class="rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 w-full max-w-xs md:max-w-sm object-cover aspect-square animate__animated animate__bounceIn" loading="lazy">
-      <div>
-        <p id="typed-text" class="text-lg font-semibold italic max-w-md animate__animated animate__fadeInUp"></p>
-        <p class="mt-4 text-gray-800 dark:text-gray-300 max-w-md">Prophet Josias Uriel, founder of United in Christ Ministry, is a dedicated servant of God, leading with passion in teaching, prayer, and community outreach. His mission is to empower believers through the transformative power of the Gospel.</p>
-      </div>
-    </div>
-    <div class="flex justify-center space-x-6 mt-6">
-      <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" class="hover:scale-110 transition-transform duration-300 p-2" title="Visit Facebook Page">
-        <svg class="w-6 h-6 text-blue-600"><use href="#facebook-icon"></use></svg>
-      </a>
-      <a href="https://www.instagram.com/jayuriel28?igsh=ZjgxcmNlMnEybDhn" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram profile" class="hover:scale-110 transition-transform duration-300 p-2" title="Visit Instagram Profile">
-        <svg class="w-6 h-6 text-pink-600"><use href="#instagram-icon"></use></svg>
-      </a>
-      <a href="https://youtube.com/@jayuriel?si=Th0_vxkQ6W6LEJpA" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel" class="hover:scale-110 transition-transform duration-300 p-2" title="Visit YouTube Channel">
-        <svg class="w-6 h-6 text-red-600"><use href="#youtube-icon"></use></svg>
-      </a>
-    </div>
-  </section>
-  <!-- Side Dot Vertical Navigation -->
-  <div id="dot-nav" class="fixed right-4 top-1/2 -translate-y-1/2 z-10 hidden md:block">
-    <a href="#home" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Home"></a>
-    <a href="#videos" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Videos"></a>
-    <a href="#events" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Events"></a>
-    <a href="#contact" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Contact"></a>
-    <a href="#revelations" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300 mb-3" aria-label="Go to Revelations"></a>
-    <a href="#portfolio" class="dot-nav-item block w-3 h-3 rounded-full bg-gray-300" aria-label="Go to Portfolio"></a>
-  </div>
-  <!-- Videos Section -->
-  <section id="videos" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
-    <h2 class="text-2xl font-bold mb-4 text-center">Sermons & Messages by Prophet Josias Uriel</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- YouTube Videos -->
-      <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe data-src="https://www.youtube.com/embed/MnnpCZcyYiI" title="The Power of Faith in Christ" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
-        <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </div>
-      <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe data-src="https://www.youtube.com/embed/vwsWuBSVxbs" title="The Kingdom Mindset" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
-        <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </div>
-      <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe data-src="https://www.youtube.com/embed/kEj4c_ayeDY" title="How to Access the Kingdom" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
-        <a href="https://www.youtube.com/watch?v=kEj4c_ayeDY" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </div>
-      <div class="aspect-video rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-gray-100 dark:bg-gray-800">
-        <iframe data-src="https://www.youtube.com/embed/S-IFCaO4A4s" title="Walking in God’s Grace" allow="encrypted-media" class="w-full h-full lazy-iframe" allowfullscreen></iframe>
-        <a href="https://www.youtube.com/watch?v=S-IFCaO4A4s" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </div>
-  <!-- Unfiltered Truth Podcast Section -->
-  <section class="py-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-    <div class="container mx-auto px-4">
-      <!-- Header -->
-      <div class="text-center mb-10">
-        <img
-          src="images/logo320.jpg"
-          alt="Unfiltered Truth Podcast Logo"
-          class="w-28 h-28 mx-auto mb-4 object-contain transform hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        >
-        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Unfiltered Truth Podcast</h3>
-        <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">Raw, real, and unapologetic conversations on what matters most.</p>
-      </div>
-      <!-- Video Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Video Template -->
-        <!-- Repeat this block for each video -->
-        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
-          <video controls class="w-full aspect-video">
-            <source src="videos/Video1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="p-4 text-center">
-            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 1: Uttered Insights</h4>
-            <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200">
-              🎬 Watch on Facebook
-            </a>
+
+  <main id="main-content" class="min-h-screen">
+    
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 pb-20 px-4 max-w-6xl mx-auto">
+      <div class="flex flex-col items-center gap-8">
+        <!-- Profile Image -->
+        <div class="relative">
+          <img src="images/pastor-josias-uriel.jpg" alt="Prophet Josias Uriel" 
+               class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-2xl border-4 border-white/50 bg-gradient-to-r from-blue-100 to-pink-100 p-2"
+               loading="lazy">
+          <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
           </div>
         </div>
-        <!-- Video 2 -->
-        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
-          <video controls class="w-full aspect-video">
-            <source src="videos/Video2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="p-4 text-center">
-            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 2: Breaking Barriers</h4>
-            <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200">
-              🎬 Watch on Facebook
-            </a>
-          </div>
+        
+        <!-- Profile Info -->
+        <div class="text-center max-w-2xl space-y-4">
+          <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Prophet Josias Uriel
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 italic">
+            United in Christ Ministry is a dedicated servant of God, leading with passion in teaching, prayer, and community outreach. His mission is to empower believers through the transformative power of the Gospel.
+          </p>
         </div>
-        <!-- Video 3 -->
-        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
-          <video controls class="w-full aspect-video">
-            <source src="videos/Video3.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="p-4 text-center">
-            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 3: Truth & Transformation</h4>
-            <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_3}" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200">
-              🎬 Watch on Facebook
-            </a>
-          </div>
+        
+        <!-- Social Links -->
+        <div class="flex space-x-6">
+          <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" 
+             class="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110" 
+             aria-label="Visit our Facebook page" title="Visit Facebook Page">
+            <svg class="w-6 h-6 text-blue-600"><use href="#facebook-icon"></use></svg>
+          </a>
+          <a href="https://www.instagram.com/jayuriel28?igsh=ZjgxcmNlMnEybDhn" target="_blank" rel="noopener noreferrer" 
+             class="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110" 
+             aria-label="Visit our Instagram profile" title="Visit Instagram Profile">
+            <svg class="w-6 h-6 text-pink-600"><use href="#instagram-icon"></use></svg>
+          </a>
         </div>
-        <!-- Video 4 -->
-        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
-          <video controls class="w-full aspect-video">
-            <source src="videos/Video4.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="p-4 text-center">
-            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 4: Faith in Action</h4>
-            <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_4}" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200">
-              🎬 Watch on Facebook
-            </a>
+      </div>
+    </section>
+
+    <!-- Sermons & Messages Section -->
+    <section id="videos" class="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Sermons & Messages by Prophet Josias Uriel
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Sermon 1 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+              <img src="https://img.youtube.com/vi/MnnpCZcyYiI/maxresdefault.jpg" 
+                   alt="The Power of Faith in Christ" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-semibold rounded-full text-blue-600">
+                  Sermon
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">The Power of Faith in Christ</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Discover how faith transforms ordinary lives into extraordinary testimonies.</p>
+              <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" 
+                 class="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Watch Now</span>
+              </a>
+            </div>
           </div>
-        </div>
-        <!-- Video 5 -->
-        <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 hover:shadow-xl transition-all">
-          <video controls class="w-full aspect-video">
-            <source src="videos/Video5.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="p-4 text-center">
-            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">Episode 5: The Final Word</h4>
-            <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_5}" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200">
-              🎬 Watch on Facebook
-            </a>
+
+          <!-- Sermon 2 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 to-pink-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+              <img src="https://img.youtube.com/vi/vwsWuBSVxbs/maxresdefault.jpg" 
+                   alt="The Kingdom Mindset" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-semibold rounded-full text-purple-600">
+                  Teaching
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">The Kingdom Mindset</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Learn to think and live with the perspective of God's Kingdom.</p>
+              <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" 
+                 class="inline-flex items-center space-x-2 text-purple-600 hover:text-purple-800 font-semibold transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Watch Now</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sermon 3 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500 md:col-span-2">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+              <img src="https://img.youtube.com/vi/kEj4c_ayeDY/maxresdefault.jpg" 
+                   alt="How Can I Get to Heaven?" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-semibold rounded-full text-green-600">
+                  Revelation
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">How Can I Get to Heaven?</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">The ultimate question answered through God's perfect plan of salvation.</p>
+              <a href="https://www.youtube.com/watch?v=kEj4c_ayeDY" target="_blank" 
+                 class="inline-flex items-center space-x-2 text-green-600 hover:text-green-800 font-semibold transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Watch Now</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sermon 4 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50 to-red-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 md:h-80 overflow-hidden">
+              <img src="https://img.youtube.com/vi/S-IFCaO4A4s/maxresdefault.jpg" 
+                   alt="Freedom in Jesus" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-semibold rounded-full text-orange-600">
+                  Testimony
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Freedom in Jesus</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Experience true liberation through the power of Christ's love.</p>
+              <a href="https://www.youtube.com/watch?v=S-IFCaO4A4s" target="_blank" 
+                 class="inline-flex items-center space-x-2 text-orange-600 hover:text-orange-800 font-semibold transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Watch Now</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Events Section -->
-  <section id="events" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
-    <h2 class="text-2xl font-bold mb-4 text-center">Upcoming Events</h2>
-    <div id="calendar" class="max-w-4xl mx-auto"></div>
-  </section>
-  <!-- Portfolio Section (Tiled + Slideshow + Lottie demo) -->
-  <section id="portfolio" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
-    <h2 class="text-2xl font-bold mb-6 text-center">Portfolio</h2>
-    <!-- Layout Switcher -->
-    <div class="flex justify-center mb-6 space-x-2">
-      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="tiled">Tiled</button>
-      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="slideshow">Slideshow</button>
-      <button class="portfolio-mode px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700" data-mode="vertical">Vertical Scroll</button>
-    </div>
-    <!-- Tiled Navigation -->
-    <div id="portfolio-tiled" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
-        <img src="images/revelation1.jpg" alt="Project 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-        <div class="p-4">
-          <h3 class="font-semibold">Project 1</h3>
-          <p class="text-sm opacity-80">Description of project 1.</p>
+    </section>
+
+    <!-- Unfiltered Truth Podcast Section -->
+    <section id="podcast" class="py-20 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <img src="images/logo320.jpg" alt="Unfiltered Truth Podcast Logo" 
+               class="w-32 h-32 mx-auto mb-6 object-contain transform hover:scale-105 transition-transform duration-300 shadow-xl rounded-2xl"
+               loading="lazy">
+          <h3 class="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
+            Unfiltered Truth Podcast
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 text-lg text-center max-w-2xl mx-auto">
+            Raw, real, and unapologetic conversations on what matters most.
+          </p>
+        </div>
+
+        <!-- Episodes Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <!-- Episode 1 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative aspect-video overflow-hidden">
+              <video controls class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" poster="videos/poster1.jpg">
+                <source src="videos/Video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <span class="inline-block px-3 py-1 bg-red-500/90 text-white text-xs font-semibold rounded-full">
+                  Episode 1
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Uttered Insights</h4>
+              <div class="flex items-center justify-between">
+                <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_1}" target="_blank" 
+                   class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 text-sm font-medium">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+                <span class="text-xs text-gray-500 dark:text-gray-400">23:45</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Episode 2 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative aspect-video overflow-hidden">
+              <video controls class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" poster="videos/poster2.jpg">
+                <source src="videos/Video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <span class="inline-block px-3 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-full">
+                  Episode 2
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Breaking Barriers</h4>
+              <div class="flex items-center justify-between">
+                <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_2}" target="_blank" 
+                   class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 text-sm font-medium">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+                <span class="text-xs text-gray-500 dark:text-gray-400">31:22</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Episode 3 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative aspect-video overflow-hidden">
+              <video controls class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" poster="videos/poster3.jpg">
+                <source src="videos/Video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <span class="inline-block px-3 py-1 bg-green-500/90 text-white text-xs font-semibold rounded-full">
+                  Episode 3 & 4
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Truth & Transformation</h4>
+              <div class="flex items-center justify-between">
+                <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_3}" target="_blank" 
+                   class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 text-sm font-medium">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+                <span class="text-xs text-gray-500 dark:text-gray-400">45:18</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Episode 4 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50 lg:col-span-2">
+            <div class="relative aspect-video overflow-hidden">
+              <video controls class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" poster="videos/poster4.jpg">
+                <source src="videos/Video4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <span class="inline-block px-3 py-1 bg-purple-500/90 text-white text-xs font-semibold rounded-full">
+                  Episode 4
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Faith in Action</h4>
+              <div class="flex items-center justify-between">
+                <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_4}" target="_blank" 
+                   class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 text-sm font-medium">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+                <span class="text-xs text-gray-500 dark:text-gray-400">28:56</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Episode 5 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative aspect-video overflow-hidden">
+              <video controls class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" poster="videos/poster5.jpg">
+                <source src="videos/Video5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2 left-2 right-2">
+                <span class="inline-block px-3 py-1 bg-indigo-500/90 text-white text-xs font-semibold rounded-full">
+                  Episode 5
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">The Final Word</h4>
+              <div class="flex items-center justify-between">
+                <a href="https://www.facebook.com/{PAGE_NAME}/videos/{VIDEO_ID_5}" target="_blank" 
+                   class="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 text-sm font-medium">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+                <span class="text-xs text-gray-500 dark:text-gray-400">19:33</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warning Banner -->
+        <div class="text-center py-8 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-2xl border border-red-200/50 dark:border-red-800/50">
+          <p class="text-red-600 dark:text-red-400 text-sm font-medium">
+            <strong>⚠️ Important Notice:</strong> This video may no longer be available. Please check the original source for the latest content.
+          </p>
+          <a href="#" class="text-red-600 dark:text-red-400 underline text-xs mt-1 inline-block hover:no-underline">Learn more</a>
         </div>
       </div>
-      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
-        <img src="images/revelation2.jpg" alt="Project 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-        <div class="p-4">
-          <h3 class="font-semibold">Project 2</h3>
-          <p class="text-sm opacity-80">Description of project 2.</p>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="events" class="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Upcoming Events
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Event 1 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/event1.jpg" alt="Faith Conference" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-green-500/90 text-white text-xs font-semibold rounded-full">
+                  Live Event
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <div class="bg-black/40 px-3 py-1 rounded-full inline-block mb-2">
+                  <span class="text-xs">📅 Nov 15, 2025</span>
+                </div>
+                <h3 class="text-lg font-bold">Faith Conference 2025</h3>
+              </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">Join us for an inspiring weekend of worship, teaching, and fellowship.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold text-green-600">Saturday 6PM</span>
+                <a href="#" class="text-green-600 hover:text-green-800 font-semibold transition-colors">Register Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 2 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 to-violet-100 dark:from-slate-800 dark:to-gray-700 shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/event2.jpg" alt="Prayer Night" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-purple-500/90 text-white text-xs font-semibold rounded-full">
+                  Prayer
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <div class="bg-black/40 px-3 py-1 rounded-full inline-block mb-2">
+                  <span class="text-xs">Every Friday</span>
+                </div>
+                <h3 class="text-lg font-bold">Night of Prayer</h3>
+              </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800">
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">A powerful time of intercession, worship, and seeking God's presence.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold text-purple-600">7PM - 9PM</span>
+                <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold transition-colors">Join Live</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar Placeholder -->
+        <div class="mt-12 text-center">
+          <div id="calendar" class="max-w-4xl mx-auto rounded-xl bg-white dark:bg-gray-800 shadow-lg p-6">
+            <p class="text-gray-500 dark:text-gray-400 text-center py-8">Interactive calendar coming soon...</p>
+          </div>
         </div>
       </div>
-      <div class="group rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hover:shadow-xl transition-all">
-        <img src="images/ministry-assistant.jpg" alt="Project 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-        <div class="p-4">
-          <h3 class="font-semibold">Project 3</h3>
-          <p class="text-sm opacity-80">Description of project 3.</p>
+    </section>
+
+    <!-- Contact & Revelations Section -->
+    <section id="contact" class="py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
+          <!-- Contact Section -->
+          <div class="space-y-8">
+            <div class="text-center lg:text-left">
+              <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Contact for Prayer Requests
+              </h2>
+              <p class="text-gray-600 dark:text-gray-300 text-lg">
+                Reach out to Prophet Josias Uriel or Lala for prayer support via WhatsApp, email, or social media.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Josias Contact Card -->
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200/50 dark:border-gray-700/50">
+                <div class="flex items-center space-x-4 mb-4">
+                  <div class="relative">
+                    <img src="images/pastor-josias-uriel.jpg" alt="Prophet Josias Uriel" 
+                         class="w-20 h-20 rounded-full object-cover border-3 border-blue-200 dark:border-blue-800">
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                      <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Prophet Josias Uriel</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Senior Pastor</p>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <a href="https://wa.me/+27649842408?text=Hello%20Prophet%20Josias,%20I%20need%20prayer%20support" 
+                     class="flex items-center space-x-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-xl hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0"><use href="#whatsapp-icon"></use></svg>
+                    <span class="text-sm font-medium text-green-700 dark:text-green-300">WhatsApp Prayer</span>
+                  </a>
+                  <a href="mailto:prayer@unitedinchristministry.org" 
+                     class="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
+                    <svg class="w-5 h-5 text-blue-500 flex-shrink-0"><use href="#email-icon"></use></svg>
+                    <span class="text-sm font-medium text-blue-700 dark:text-blue-300">Email Support</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Lala Contact Card -->
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200/50 dark:border-gray-700/50">
+                <div class="flex items-center space-x-4 mb-4">
+                  <div class="relative">
+                    <img src="images/ministry-assistant.jpg" alt="Lala" 
+                         class="w-20 h-20 rounded-full object-cover border-3 border-purple-200 dark:border-purple-800">
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                      <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Lala</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Prayer Coordinator</p>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <a href="https://wa.me/+27790116611?text=Hello%20Lala,%20I%20need%20prayer%20support" 
+                     class="flex items-center space-x-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-xl hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors">
+                    <svg class="w-5 h-5 text-green-500 flex-shrink-0"><use href="#whatsapp-icon"></use></svg>
+                    <span class="text-sm font-medium text-green-700 dark:text-green-300">WhatsApp Prayer</span>
+                  </a>
+                  <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank"
+                     class="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
+                    <svg class="w-5 h-5 text-blue-500 flex-shrink-0"><use href="#facebook-icon"></use></svg>
+                    <span class="text-sm font-medium text-blue-700 dark:text-blue-300">Facebook Message</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-6 border-t border-gray-200/50 dark:border-gray-700/50">
+              <a href="#home" class="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">Home</a>
+              <a href="#videos" class="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">Videos</a>
+              <a href="#events" class="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">Events</a>
+              <a href="#revelations" class="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors">Revelations</a>
+            </div>
+          </div>
+
+          <!-- Revelations Section -->
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-center lg:text-left mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Revelations & Teachings
+            </h2>
+
+            <!-- Revelation 1 -->
+            <article class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+              <div class="relative mb-4">
+                <img src="images/revelation1.jpg" alt="Word of Life" 
+                     class="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                <div class="absolute top-3 right-3 flex space-x-2">
+                  <button class="p-2 text-white/80 hover:text-red-300 transition-colors" title="Like">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </button>
+                  <button class="p-2 text-white/80 hover:text-blue-300 transition-colors" title="Share">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white">Every Saturday | 8PM</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Word of Life with Prophet Josias Uriel #Faith #Teaching</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Posted on Oct 27, 2025</p>
+                <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" 
+                   class="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <span>Watch on YouTube</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Revelation 2 -->
+            <article class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+              <div class="relative mb-4">
+                <img src="images/revelation2.jpg" alt="Understanding the Holy Spirit" 
+                     class="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                <div class="absolute top-3 right-3 flex space-x-2">
+                  <button class="p-2 text-white/80 hover:text-red-300 transition-colors" title="Like">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </button>
+                  <button class="p-2 text-white/80 hover:text-blue-300 transition-colors" title="Share">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white">Understanding the Holy Spirit</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300">A deep dive into the person and works of the Holy Spirit, inspired by Prophet Josias Uriel's sermons. #HolySpirit #Revelation</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Posted on Oct 20, 2025</p>
+                <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" 
+                   class="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <span>Watch on YouTube</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- 21 Days of Priesthood Book -->
+            <div class="group bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-purple-200/50 dark:border-purple-800/50">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="w-20 h-28 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-sm">BOOK</span>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-purple-800 dark:text-purple-200 mb-2">21 Days of Priesthood</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Understanding the person and works of the Holy Spirit through daily devotionals.</p>
+                  <div class="flex items-center space-x-4 text-sm">
+                    <span class="text-purple-600 dark:text-purple-400 font-semibold">By Josias Uriel</span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">Oct 15, 2025</span>
+                  </div>
+                  <a href="#" class="inline-flex items-center space-x-2 mt-3 text-purple-600 hover:text-purple-800 text-sm font-medium transition-colors">
+                    <span>Learn More</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Slideshow Navigation -->
-    <div id="portfolio-slideshow" class="hidden relative max-w-4xl mx-auto mt-8">
-      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800">
-        <div class="aspect-video"><img src="images/revelation1.jpg" alt="Slide 1" class="w-full h-full object-cover"></div>
-      </div>
-      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hidden">
-        <div class="aspect-video"><img src="images/revelation2.jpg" alt="Slide 2" class="w-full h-full object-cover"></div>
-      </div>
-      <div class="slide rounded-xl overflow-hidden shadow-md bg-white dark:bg-gray-800 hidden">
-        <div class="aspect-video"><img src="images/ministry-assistant.jpg" alt="Slide 3" class="w-full h-full object-cover"></div>
-      </div>
-      <button id="prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 px-3 py-2 rounded-full bg-gray-200 dark:bg-gray-700">‹</button>
-      <button id="next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-2 rounded-full bg-gray-200 dark:bg-gray-700">›</button>
-    </div>
-    <!-- Vertical Scroll Story (parallax placeholder) -->
-    <div id="portfolio-vertical" class="hidden space-y-12 max-w-3xl mx-auto mt-8">
-      <div class="story-block story-img-1 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
-      <div class="story-block story-img-2 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
-      <div class="story-block story-img-3 h-64 rounded-xl bg-fixed bg-center bg-cover"></div>
-    </div>
-    <!-- Lottie Animation Demo -->
-    <div class="max-w-3xl mx-auto mt-12 text-center">
-      <h3 class="font-semibold mb-2">Smooth Icon Animation</h3>
-      <div id="lottie-container" class="mx-auto lottie-size"></div>
-    </div>
-  </section>
-  <!-- Contact for Prayer Section -->
-  <section id="contact" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn">
-    <h2 class="text-2xl font-bold mb-4 text-center">Contact for Prayer Requests</h2>
-    <p class="text-center mb-6 text-gray-800 dark:text-gray-300">Reach out to Prophet Josias Uriel or Lala for prayer support via WhatsApp, email, or social media.</p>
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-      <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-        <img src="images/pastor-josias-uriel.jpg" alt="Pastor Josias Uriel" class="rounded-full w-32 h-32 object-cover mb-4" loading="lazy">
-        <h3 class="text-lg font-semibold">Prophet Josias Uriel</h3>
-        <div class="flex space-x-4 mt-2">
-          <a href="https://wa.me/+27649842408?text=Please%20pray%20for%20my%20request:" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via WhatsApp to Pastor Josias Uriel" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via WhatsApp">
-            <svg class="w-8 h-8 text-green-500"><use href="#whatsapp-icon"></use></svg>
-          </a>
-          <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via Facebook" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via Facebook">
-            <svg class="w-8 h-8 text-blue-600"><use href="#facebook-icon"></use></svg>
-          </a>
-          <a href="https://www.instagram.com/jayuriel28?igsh=ZjgxcmNlMnEybDhn" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via Instagram" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via Instagram">
-            <svg class="w-8 h-8 text-pink-600"><use href="#instagram-icon"></use></svg>
-          </a>
-          <a href="https://youtube.com/@jayuriel?si=Th0_vxkQ6W6LEJpA" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via YouTube comments" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via YouTube">
-            <svg class="w-8 h-8 text-red-600"><use href="#youtube-icon"></use></svg>
-          </a>
-          <a href="mailto:prayer@unitedinchristministry.org" class="hover:scale-110 transition-transform duration-300 p-2" aria-label="Send prayer request via email" title="Contact via Email">
-            <svg class="w-8 h-8 text-gray-600"><use href="#email-icon"></use></svg>
-          </a>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+          Portfolio
+        </h2>
+        
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/revelation1.jpg" alt="Project 1" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-full">
+                  Web Design
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Project 1</h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Modern responsive website design with interactive elements and smooth animations.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500 dark:text-gray-400">React • Tailwind</span>
+                <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors">View Project</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/revelation2.jpg" alt="Project 2" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-purple-500/90 text-white text-xs font-semibold rounded-full">
+                  Mobile App
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Project 2</h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Cross-platform mobile application with native performance and beautiful UI.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500 dark:text-gray-400">Flutter • Firebase</span>
+                <a href="#" class="text-purple-600 hover:text-purple-800 text-sm font-medium transition-colors">View Project</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50 dark:border-gray-700/50">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/ministry-assistant.jpg" alt="Project 3" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-green-500/90 text-white text-xs font-semibold rounded-full">
+                  Dashboard
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Project 3</h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Comprehensive admin dashboard with real-time analytics and user management.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500 dark:text-gray-400">Vue.js • Chart.js</span>
+                <a href="#" class="text-green-600 hover:text-green-800 text-sm font-medium transition-colors">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Smooth Icon Animation Demo -->
+        <div class="text-center mt-16">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-6">Smooth Icon Animation</h3>
+          <div id="lottie-container" class="mx-auto w-32 h-32"></div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-4">Interactive Lottie animations for enhanced user experience</p>
         </div>
       </div>
-      <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-        <img src="images/ministry-assistant.jpg" alt="Lala" class="rounded-full w-32 h-32 object-cover mb-4" loading="lazy">
-        <h3 class="text-lg font-semibold">Lala</h3>
-        <div class="flex space-x-4 mt-2">
-          <a href="https://wa.me/+27790116611?text=Please%20pray%20for%20my%20request:" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via WhatsApp to Lala" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via WhatsApp">
-            <svg class="w-8 h-8 text-green-500"><use href="#whatsapp-icon"></use></svg>
-          </a>
-          <a href="https://www.facebook.com/share/1AH2kRMiBb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via Facebook" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via Facebook">
-            <svg class="w-8 h-8 text-blue-600"><use href="#facebook-icon"></use></svg>
-          </a>
-          <a href="https://www.instagram.com/jayuriel28?igsh=ZjgxcmNlMnEybDhn" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via Instagram" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via Instagram">
-            <svg class="w-8 h-8 text-pink-600"><use href="#instagram-icon"></use></svg>
-          </a>
-          <a href="https://youtube.com/@jayuriel?si=Th0_vxkQ6W6LEJpA" target="_blank" rel="noopener noreferrer" aria-label="Send prayer request via YouTube comments" class="hover:scale-110 transition-transform duration-300 p-2" title="Contact via YouTube">
-            <svg class="w-8 h-8 text-red-600"><use href="#youtube-icon"></use></svg>
-          </a>
-          <a href="mailto:prayer@unitedinchristministry.org" class="hover:scale-110 transition-transform duration-300 p-2" aria-label="Send prayer request via email" title="Contact via Email">
-            <svg class="w-8 h-8 text-gray-600"><use href="#email-icon"></use></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Revelations & Teachings Section -->
-  <section id="revelations" class="p-8 pt-16 bg-gradient-to-b from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 animate__animated animate__fadeIn min-h-screen">
-    <h2 class="text-2xl font-bold mb-4 text-center">Revelations & Teachings</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <article class="rounded-xl shadow-md p-4 bg-white dark:bg-gray-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-gray-700">
-        <img src="images/revelation1.jpg" alt="Word of Life with Pastor Josias Uriel" class="rounded-lg mb-4 w-full h-56 object-cover" loading="lazy">
-        <h3 class="text-lg font-bold mb-2">Every Saturday | 8PM</h3>
-        <p class="mb-2 text-gray-600 dark:text-gray-300 text-sm">Word of Life with Prophet Josias Uriel #Faith #Teaching</p>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Posted on Oct 27, 2025</p>
-        <div class="flex space-x-4">
-          <button class="interaction-button text-gray-500 hover:text-red-500 p-2" title="Like this Post" aria-label="Like the Word of Life post">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
-          <button class="interaction-button text-gray-500 hover:text-blue-500 p-2" title="Share this Post" aria-label="Share the Word of Life post">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-          </button>
-        </div>
-        <a href="https://www.youtube.com/watch?v=MnnpCZcyYiI" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline text-sm mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </article>
-      <article class="rounded-xl shadow-md p-4 bg-white dark:bg-gray-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border border-gray-200 dark:border-gray-700">
-        <img src="images/revelation2.jpg" alt="Understanding the Holy Spirit" class="rounded-lg mb-4 w-full h-56 object-cover" loading="lazy">
-        <h3 class="text-lg font-bold mb-2">Understanding the Holy Spirit</h3>
-        <p class="mb-2 text-gray-600 dark:text-gray-300 text-sm">A deep dive into the person and works of the Holy Spirit, inspired by Prophet Josias Uriel’s sermons. #HolySpirit #Revelation</p>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Posted on Oct 20, 2025</p>
-        <div class="flex space-x-4">
-          <button class="interaction-button text-gray-500 hover:text-red-500 p-2" title="Like this Post" aria-label="Like the Understanding the Holy Spirit post">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
-          <button class="interaction-button text-gray-500 hover:text-blue-500 p-2" title="Share this Post" aria-label="Share the Understanding the Holy Spirit post">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-          </button>
-        </div>
-        <a href="https://www.youtube.com/watch?v=vwsWuBSVxbs" target="_blank" rel="noopener noreferrer" class="block text-center text-blue-500 hover:underline text-sm mt-2" title="Watch on YouTube" tabindex="0">Watch on YouTube</a>
-      </article>
-      <!-- Placeholder for Social Media Feed -->
-      <div class="col-span-full text-center mt-6">
-        <h3 class="text-lg font-semibold">Latest Social Media Updates</h3>
-        <p class="text-gray-600 dark:text-gray-300">Follow us on Instagram and YouTube for the latest teachings and revelations.</p>
-        <div id="social-feed" class="mt-4">
-          <p class="text-sm text-gray-500 dark:text-gray-400">Social media feed coming soon...</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="text-center py-6 text-sm opacity-70 bg-gradient-to-r from-blue-100 to-green-100 dark:from-blue-900 dark:to-green-900">
-    © 2025 United in Christ Ministry - Prophet Josias Uriel, website created by Bonny Sithole, all rights reserved
-  </footer>
+    </section>
+
   </main>
+
+  <!-- Navigation (Fixed Bottom on Mobile, Top on Desktop) -->
+  <nav class="fixed bottom-0 left-0 right-0 md:static md:top-0 md:bg-transparent md:backdrop-blur-none z-50 md:z-20">
+    <!-- Mobile Bottom Nav -->
+    <div class="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-t border-gray-200/50 dark:border-gray-700/50 px-4 py-2">
+      <div class="flex justify-around items-center">
+        <a href="#home" class="flex flex-col items-center space-y-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span>Home</span>
+        </a>
+        <a href="#videos" class="flex flex-col items-center space-y-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.665z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Videos</span>
+        </a>
+        <a href="#events" class="flex flex-col items-center space-y-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Events</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center space-y-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Prayer</span>
+        </a>
+        <a href="#portfolio" class="flex flex-col items-center space-y-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors p-2 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+          <span>Portfolio</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Desktop Top Nav -->
+    <div class="hidden md:flex justify-center items-center space-x-1 py-4 bg-white/30 dark:bg-gray-900/30 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 rounded-t-xl mx-4 -mt-4">
+      <a href="#home" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-300 font-medium transition-all duration-200" title="Go to Home">Home</a>
+      <a href="#videos" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-300 font-medium transition-all duration-200" title="Go to Videos">Videos</a>
+      <a href="#events" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-300 font-medium transition-all duration-200" title="Go to Events">Events</a>
+      <a href="#contact" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-300 font-medium transition-all duration-200" title="Go to Prayer">Prayer</a>
+      <a href="#portfolio" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-300 font-medium transition-all duration-200" title="Go to Portfolio">Portfolio</a>
+      <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ml-2" title="Toggle Dark/Light Mode" aria-label="Switch to dark mode">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Fullscreen Overlay Navigation -->
+  <div id="overlay-menu" class="fixed inset-0 z-40 hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg" role="dialog" aria-modal="true" aria-hidden="true">
+    <button id="close-overlay-menu" class="absolute top-6 right-6 p-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 text-2xl font-bold" aria-label="Close menu" title="Close menu">✕</button>
+    <div class="h-full flex flex-col items-center justify-center space-y-8 text-2xl font-bold">
+      <a class="overlay-link block px-6 py-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors" href="#home">Home</a>
+      <a class="overlay-link block px-6 py-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors" href="#videos">Videos</a>
+      <a class="overlay-link block px-6 py-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors" href="#events">Events</a>
+      <a class="overlay-link block px-6 py-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors" href="#contact">Prayer</a>
+      <a class="overlay-link block px-6 py-3 rounded-full hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors" href="#portfolio">Portfolio</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-sm text-gray-600 dark:text-gray-400 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border-t border-gray-200/50 dark:border-gray-700/50 mt-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <p>© 2025 United in Christ Ministry - Prophet Josias Uriel</p>
+      <p class="mt-2">Website created by Bonny Sithole • All rights reserved</p>
+    </div>
+  </footer>
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
     {
@@ -413,9 +829,15 @@
         "telephone": "+27649842408",
         "contactType": "Prayer Support",
         "email": "prayer@unitedinchristministry.org"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Prophet Josias Uriel",
+        "jobTitle": "Founder & Senior Pastor"
       }
     }
   </script>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/axios@1.4.0/dist/axios.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/min/moment.min.js" defer></script>
@@ -424,19 +846,11 @@
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
   <script src="js/typing.js" type="module" defer></script>
   <script src="js/calendar.js" type="module" defer></script>
-  <script src="js/theme.js" type="module"></script> <!-- No defer -->
+  <script src="js/theme.js" type="module"></script>
   <script src="js/navigation.js" type="module" defer></script>
   <script src="js/animations.js" type="module" defer></script>
   <script src="js/portfolio.js" type="module" defer></script>
   <script src="js/ripple.js" type="module" defer></script>
   <script src="js/main.js" type="module" defer></script>
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function(e) {
-      const dropdown = document.getElementById('menu-dropdown');
-      if (window.innerWidth <= 768) {
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      }
-    });
-  </script>
 </body>
 </html>
