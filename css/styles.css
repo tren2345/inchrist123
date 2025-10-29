@@ -1,71 +1,40 @@
-/* Existing CSS remains unchanged, add these rules if not present */
-
-/* Dropdown Menu */
-#menu-toggle {
-    display: flex;
-    align-items: center;
-}
-
+/* Enhanced Dropdown and Overlay Visibility */
 #menu-dropdown {
-    display: none;
+  display: none !important;
 }
 
-#menu-toggle:focus + #menu-dropdown,
-#menu-toggle:hover + #menu-dropdown {
-    display: block;
+#menu-dropdown[style*="block"] {
+  display: block !important;
 }
 
-@media (max-width: 768px) {
-    #menu-dropdown {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        dark:bg-gray-900/95;
-        border-top: 1px solid #d1d5db;
-        dark:border-gray-700;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    #menu-dropdown a {
-        padding: 1rem;
-        font-size: 1.25rem;
-        text-align: center;
-    }
-
-    #menu-toggle {
-        width: 100%;
-        justify-content: center;
-    }
-
-    #theme-toggle {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
-@media (min-width: 769px) {
-    #menu-dropdown {
-        position: absolute;
-    }
-
-    #menu-toggle:focus + #menu-dropdown,
-    #menu-toggle:hover + #menu-dropdown {
-        display: block;
-    }
-}
-
-/* Overlay Menu */
 #overlay-menu {
-    display: none;
+  display: none !important;
 }
 
-#overlay-menu.hidden {
-    display: none;
+#overlay-menu:not(.hidden) {
+  display: flex !important; /* Ensure flex for centering */
+}
+
+/* Shimmer for YouTube skeletons (if not loading) */
+.aspect-video.skeleton {
+  position: relative;
+  background: #f3f4f6; /* Light gray fallback */
+}
+
+.aspect-video.skeleton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.08) 37%, rgba(0,0,0,0.05) 63%);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -40rem 0; }
+  100% { background-position: 40rem 0; }
+}
+
+/* Scale for interactions */
+.scale-110 {
+  transform: scale(1.1);
 }
